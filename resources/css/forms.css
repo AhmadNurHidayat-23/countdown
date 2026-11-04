@@ -1,0 +1,21 @@
+.countdown-form { margin-top: 26px; }
+.field { margin-bottom: 20px; min-width: 0; }
+.field label { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; margin-bottom: 9px; }
+.optional { font-size: 10px; font-weight: 400; }
+input, textarea {
+    display: block; width: 100%; min-width: 0; border: 1px solid var(--rule); border-radius: 0;
+    background: transparent; min-height: 44px; padding: 12px 10px; font-size: 13px; box-shadow: none;
+}
+textarea { resize: vertical; min-height: 75px; line-height: 1.5; }
+input::placeholder, textarea::placeholder { color: var(--ink); opacity: .65; font-size: 11px; }
+input[type='date'], input[type='time'] { min-height: 45px; appearance: auto; padding: 10px 8px; }
+.date-time-fields { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; }
+.date-time-fields .field { margin-bottom: 0; }
+.form-hint { font-size: 10px; line-height: 1.5; margin-top: 12px; }
+.submit-button { margin-top: 24px; width: 100%; }
+.cancel-link { display: block; text-align: center; margin-top: 18px; font-size: 12px; padding: 8px; }
+.form-errors { border-left: 3px solid var(--orange); padding: 12px; font-size: 12px; line-height: 1.6; margin-bottom: 20px; }
+.form-errors ul { margin: 8px 0 0; padding-left: 16px; }
+.field-error { font-size: 11px; margin-top: 7px; line-height: 1.5; }
+[aria-invalid='true'] { border-color: var(--ink); border-width: 2px; }
+@media (max-width: 360px) { .date-time-fields { grid-template-columns: minmax(0, 1fr); gap: 18px; } }

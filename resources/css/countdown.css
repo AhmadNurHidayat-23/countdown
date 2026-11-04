@@ -1,0 +1,66 @@
+.countdown-display { border-top: 4px solid var(--orange); background: var(--orange); padding: 25px 30px 16px; min-width: 0; display: flex; flex-direction: column; }
+.is-preview { min-height: 419px; background: transparent; border: 1px solid var(--rule); border-top: 4px solid var(--orange); }
+.display-topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.live-label { letter-spacing: .035em; font-size: 9px; white-space: nowrap; }
+.live-label > span:first-child { font-size: 7px; margin-right: 4px; }
+.event-heading { padding: 38px 0 30px; }
+.event-heading h2 { font-size: clamp(26px, 3vw, 46px); font-weight: 500; letter-spacing: -.05em; line-height: 1.12; overflow-wrap: anywhere; }
+.event-description { font-size: 14px; line-height: 1.6; margin-top: 12px; max-width: 600px; overflow-wrap: anywhere; white-space: pre-line; }
+.event-date { font-size: 12px; margin-top: 13px; line-height: 1.6; }
+.digits { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: auto 0 30px; gap: 10px; }
+.digit-group { min-width: 0; padding: 0 8px 0 12px; border-left: 1px solid var(--rule); }
+.digit-group:first-child { padding-left: 0; border-left: 0; }
+.digit { display: block; font-size: clamp(42px, 6.8vw, 98px); line-height: 1.05; letter-spacing: -.07em; font-weight: 400; font-variant-numeric: tabular-nums; }
+.digit-label { display: block; margin-top: 12px; font-size: 10px; letter-spacing: .12em; }
+.digits.has-many-days .digit { font-size: clamp(30px, 4.4vw, 64px); }
+.completion { font-size: 17px; margin-bottom: 20px; }
+.display-bottomline { border-top: 1px solid var(--rule); padding-top: 10px; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; }
+.display-bottomline > span { font-size: 10px; line-height: 1.5; }
+.display-actions { display: flex; gap: 20px; flex-wrap: wrap; }
+.shared-page { padding-top: 40px; }
+.shared-intro { margin-bottom: 24px; }
+.shared-page .countdown-display { min-height: 520px; padding: 35px 48px 20px; }
+.shared-page .event-heading { padding-top: 46px; }
+.shared-page .event-heading h2 { font-size: clamp(34px, 4.5vw, 66px); }
+.shared-page .digit { font-size: clamp(72px, 12vw, 172px); }
+.shared-page .digits.has-many-days .digit { font-size: clamp(36px, 7vw, 100px); }
+.shared-page .digit-group { padding-left: 24px; }
+.shared-page .digit-group:first-child { padding-left: 0; }
+.shared-caption { text-align: center; margin-top: 25px; font-size: 12px; }
+.countdown-display:fullscreen, .countdown-display.fallback-fullscreen {
+    width: 100%; height: 100%; min-height: 100%; overflow: auto;
+    padding: 5vh 6vw; border: 0; background: var(--paper); color: var(--ink);
+}
+.countdown-display.fallback-fullscreen { position: fixed; inset: 0; z-index: 50; }
+body.has-fullscreen { overflow: hidden; }
+.countdown-display:fullscreen .event-heading, .fallback-fullscreen .event-heading { padding-top: 7vh; }
+.countdown-display:fullscreen .event-heading h2, .fallback-fullscreen .event-heading h2 { font-size: clamp(32px, 5vw, 80px); }
+.countdown-display:fullscreen .digit, .fallback-fullscreen .digit { font-size: clamp(60px, 16vw, 240px); }
+.countdown-display:fullscreen .digits.has-many-days .digit, .fallback-fullscreen .digits.has-many-days .digit { font-size: clamp(28px, 8vw, 130px); }
+@media (max-width: 1100px) and (min-width: 761px) {
+    .is-preview { padding: 20px; }
+    .is-preview .display-bottomline { align-items: start; flex-direction: column; }
+    .is-preview .digit-group { padding-left: 8px; }
+    .is-preview .digit { font-size: 5.5vw; }
+}
+@media (max-width: 760px) {
+    .countdown-display { padding: 20px; }
+    .is-preview { min-height: 355px; }
+    .display-topline { flex-wrap: wrap; }
+    .event-heading { padding: 28px 0; }
+    .event-heading h2 { font-size: 32px; }
+    .digit { font-size: clamp(39px, 10vw, 74px); }
+    .digits { gap: 4px; margin-bottom: 26px; }
+    .digit-group { padding-left: 8px; padding-right: 0; }
+    .digits.has-many-days .digit { font-size: clamp(21px, 6vw, 44px); }
+    .digit-label { font-size: 9px; margin-top: 9px; }
+    .display-bottomline { flex-wrap: wrap; }
+    .shared-page { padding-top: 28px; }
+    .shared-page .countdown-display { padding: 24px 20px 14px; min-height: 470px; }
+    .shared-page .event-heading { padding: 36px 0; }
+    .shared-page .digit { font-size: clamp(38px, 10.5vw, 78px); }
+    .shared-page .digit-group { padding-left: 8px; }
+    .shared-page .digits.has-many-days .digit { font-size: clamp(21px, 6vw, 44px); }
+    .countdown-display:fullscreen, .countdown-display.fallback-fullscreen { padding: 24px 20px; }
+    .countdown-display:fullscreen .digit, .fallback-fullscreen .digit { font-size: 14vw; }
+}
