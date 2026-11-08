@@ -28,4 +28,24 @@ class Countdown extends Model
     {
         return 'share_token';
     }
+
+    public function isFinished(): bool
+    {
+        return $this->target_at->isPast();
+    }
+
+    public function isUpcoming(): bool
+    {
+        return $this->target_at->isFuture();
+    }
+
+    public function scopeUpcoming($query)
+    {
+        return $query->where('target_at', '>', now());
+    }
+
+    public function scopeFinished($query)
+    {
+        return $query->where('target_at', '<=', now());
+    }
 }

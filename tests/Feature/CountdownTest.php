@@ -151,4 +151,28 @@ class CountdownTest extends TestCase
         $this->assertNotSame($first->share_token, $second->share_token);
         $this->get('/c/'.$first->share_token)->assertSee('&lt;script&gt;', false)->assertDontSee('<script>alert(1)</script>', false);
     }
+
+    public function test_countdown_status_helpers_and_scopes(): void
+    {
+        $upcoming = $this->event([
+            'name' => 'Acara Mendatang',
+            'target_at' => CarbonImmutable::now('UTC')->addDays(2),
+        ]);
+        $finished = $this->event([
+            'name' => 'Acara Selesai',
+            'target_at' => CarbonImmutable::now('UTC')->subDays(2),
+        ]);
+
+        $this->assertTrue($upcoming->isUpcoming());
+        $this->assertFalse($upcoming->isFinished());
+
+        $this->assertTrue($finished->isFinished());
+        $this->assertFalse($finished->isUpcoming());
+
+        $this->assertCount(1, Countdown::upcoming()->get());
+        $this->assertTrue(Countdown::upcoming()->first()->is($upcoming));
+
+        $this->assertCount(1, Countdown::finished()->get());
+        $this->assertTrue(Countdown::finished()->first()->is($finished));
+    }
 }
